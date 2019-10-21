@@ -6,6 +6,7 @@ Note that you'll need updated VDSL firmware since the boxes were manufactured fo
 To configure from a Mac using Aten UC-232A USB to serial convertor:
 
 Install latest Mac OS driver for Aten UC-232A
+
 Allow kernel extension in security preferences, run the installer again, reboot again (tested with Mojave and Catalina)
 
 ```
@@ -60,7 +61,7 @@ crisco#show run brief
 
 `show controller vdsl 0` should let you know how the modem sync is going.  It takes 5-10 mins with VDSL2.
 
-Forward to your router's WAN input from any of the FastEthernet ports.  Except FastEthernet2 which should allow router access via telnet on 192.168.211.211.
+Forward to your router's WAN input from any of the FastEthernet ports.  Except FastEthernet2 which should allow router admin access via telnet on 192.168.211.211.
 
 20191021 800m line length from the green box:
 
