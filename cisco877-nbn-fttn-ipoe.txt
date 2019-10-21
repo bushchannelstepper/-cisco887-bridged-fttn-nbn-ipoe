@@ -1,4 +1,4 @@
-! 887VA-BRIDGE-vDSL2-NBN-WITH IP ON FE2
+! 887VA-M-BRIDGE-NBN-FTTN-IPOE
 no service pad
 service tcp-keepalives-in
 service tcp-keepalives-out
