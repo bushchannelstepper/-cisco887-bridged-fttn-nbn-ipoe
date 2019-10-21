@@ -1,0 +1,104 @@
+! 887VA-BRIDGE-vDSL2-NBN-WITH IP ON FE2
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service sequence-numbers
+no service password-encryption
+!
+hostname crisco
+!
+logging buffered 16000
+no logging console
+!
+boot-start-marker
+boot-end-marker
+!
+no aaa new-model
+clock timezone AEDT 8 0
+! wan mode dsl
+no ipv6 cef
+ip source-route
+no ip routing
+no ip cef
+!
+memory-size iomem 10
+crypto pki token default removal timeout 0
+!
+archive
+log config
+  hidekeys
+exit
+exit
+
+!
+controller VDSL 0
+operating mode vdsl2
+firmware filename flash:vdsl.bin
+sra
+!
+interface ATM0
+no ip address
+no ip route-cache
+shutdown
+no atm ilmi-keepalive
+!
+interface Ethernet0
+description ABB WAN
+ip address dhcp
+no shutdown
+no ip redirects
+no ip unreachables
+no ip proxy-arp
+ip flow ingress
+ip nat outside
+ip virtual-reassembly in
+ipv6 address autoconfig
+bridge-group 1
+!
+interface FastEthernet0
+no ip address
+!
+interface FastEthernet1
+no ip address
+!
+interface FastEthernet2
+description Link for admin / monitoring
+switchport access vlan 211
+!
+interface FastEthernet3
+no ip address
+!
+interface Vlan1
+no ip address
+no ip virtual-reassembly in
+no ip route-cache
+bridge-group 1
+!
+! Assign Switchport(s) to Existing VLAN:
+Interface FastEthernet 2
+switchport access vlan 211
+!
+! Assign IP address to VLAN211 - Managment
+Interface Vlan 211
+ip address 192.168.211.211 255.255.255.0
+
+ip forward-protocol nd
+ip http server
+ip http authentication local
+no ip http secure-server
+!
+!control-plane
+!
+bridge 1 protocol ieee
+!
+line con 0
+no modem enable
+line aux 0
+line vty 0 4
+login local
+transport input all
+!
+scheduler allocate 60000 1000
+end
