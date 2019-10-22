@@ -76,11 +76,11 @@ no ip virtual-reassembly in
 no ip route-cache
 bridge-group 1
 !
-! Assign Switchport(s) to Existing VLAN:
+! Assign switchport to existing VLAN:
 Interface FastEthernet 2
 switchport access vlan 211
 !
-! Assign IP address to VLAN211 - Managment
+! Assign IP address to VLAN211 for admin / monitoring
 Interface Vlan 211
 ip address 192.168.211.211 255.255.255.0
 
