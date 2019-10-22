@@ -1,7 +1,7 @@
 Cisco config for 877VA-M for use in bridged mode with Aussie Broadband
 ======================================================================
 
-Note that you'll need updated VDSL firmware since the boxes were manufactured for this to work.  Mine shipped with this so I haven't had to chase it up, but there are conversations on whirlpool about it if you need.  You'll want to identify your VDSL firmware file with `show controllers vdsl 0` and sub the filename in place of `vdsl.bin` in the script.  Some of those whirlpool conversations helped cobble this config together, so thanks to those people.
+Note that you'll need updated VDSL firmware since the boxes were manufactured for this to work.  Mine shipped with this so I haven't had to chase it up, but there are conversations on whirlpool about it if you need.  You'll want to identify your VDSL firmware file with `show controller vdsl 0` and sub the filename in place of `vdsl.bin` in the script.  Some of those whirlpool conversations helped cobble this config together, so thanks to those people.
 
 To configure from a Mac using Aten UC-232A USB to serial convertor:
 
@@ -9,7 +9,7 @@ Install latest Mac OS driver for Aten UC-232A
 
 Allow kernel extension in security preferences, run the installer again, reboot again (tested with Mojave and Catalina).  
 
-GNU screen works as a serial terminal which is handy.  (It's in MacPorts.)
+GNU screen works as a serial terminal which is handy.  It's in MacPorts.
 
 ```
 % ls -l /dev|grep 232
